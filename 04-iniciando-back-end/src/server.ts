@@ -2,6 +2,7 @@ import 'reflect-metadata';
 
 import express, { Request, Response, NextFunction } from 'express';
 import 'express-async-errors';
+import cors from 'cors';
 import chalk from 'chalk';
 
 import uploadConfig from './config/upload';
@@ -23,6 +24,7 @@ database
     const app = express();
 
     app.use(express.json());
+    app.use(cors());
     app.use('/files', express.static(uploadConfig.directory));
     app.use(router);
 
